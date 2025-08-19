@@ -15,7 +15,7 @@ abstract class NeuroAction<T>(
 
     internal val schema by lazy { serializer?.descriptor?.jsonSchemaProperty(limitedResponseResolver = ::limitedResponseResolver) }
 
-    abstract fun validate(data: T): Boolean
+    abstract fun validate(data: T): String?
 
     abstract fun successMessage(data: T): String
 

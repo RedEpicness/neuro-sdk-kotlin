@@ -16,8 +16,8 @@ fun main() {
     runBlocking {
         launch {
             while (true) {
-                delay(5.seconds)
-                sdk.forceAction("Current state!", "Please send an echo:", false, listOf(EchoAction, NoResponseAction, ListAction)) { action ->
+                delay(10.seconds)
+                sdk.forceAction("Current state!", "Please send an echo:", false, listOf(EchoAction, NoResponseAction, ListAction, ValidationFail)) { action ->
                     println("Executed action callback for action: " + action.name)
                 }
             }
@@ -37,13 +37,26 @@ object NoResponseAction : NeuroActionWithoutResponse("no-response", "This is the
 
 }
 
+object ValidationFail : NeuroActionWithoutResponse("validation-fail", "Always fails validation") {
+    override fun validate(data: Unit) = "Validation failed!"
+
+    override fun successMessage(): String {
+        return "Successful!"
+    }
+
+    override suspend fun process() {
+        println("Processing...")
+    }
+
+}
+
 object EchoAction : NeuroAction<String>(
     "echo",
     "A simple command that echoes the message received to the logs.",
     String.serializer(),
 ) {
 
-    override fun validate(data: String) = true
+    override fun validate(data: String) = null
 
     override fun successMessage(data: String) = "Successfully echoed: $data"
 
@@ -59,7 +72,7 @@ object ListAction : NeuroAction<TestListResponse>(
     TestListResponse.serializer(),
 ) {
 
-    override fun validate(data: TestListResponse) = true
+    override fun validate(data: TestListResponse) = null
 
     override fun successMessage(data: TestListResponse) = "Successfully processed: ${data}"
 

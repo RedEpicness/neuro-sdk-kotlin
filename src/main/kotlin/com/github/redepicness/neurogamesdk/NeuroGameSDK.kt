@@ -135,7 +135,7 @@ class NeuroGameSDK(
     }
 
     private suspend fun processAction(actionMessage: NeuroMessage.ActionExecute): NeuroMessage {
-        var (id, name, data) = actionMessage
+        val (id, name, data) = actionMessage
         logger.info("Processing action: $name ($id)")
         @Suppress("UNCHECKED_CAST")
         val action: NeuroAction<Any> = registeredActions[name] as? NeuroAction<Any>
@@ -144,7 +144,6 @@ class NeuroGameSDK(
         val obj: Any
         if (action is NeuroActionWithoutResponse) {
             obj = Unit
-            data = null
         } else {
             if (data == null) {
                 logger.warn("Unsuccessful: Missing data field for action '$name'!")
@@ -153,13 +152,12 @@ class NeuroGameSDK(
             obj = action.deserialize(data)
                 ?: return NeuroMessage.actionResult(id, false, "Could not deserialize data!")
                     .also { logger.warn("Unsuccessful: Could not deserialize data!") }
-            val valid = action.validate(obj)
-            if (!valid) {
-                logger.warn("Unsuccessful: Invalid data!")
-                return NeuroMessage.actionResult(id, false, "Invalid data!")
-            }
         }
-
+        val errorMessage = action.validate(obj)
+        if (errorMessage != null) {
+            logger.warn("Unsuccessful: Failed validation: $errorMessage")
+            return NeuroMessage.actionResult(id, false, errorMessage)
+        }
         scope.launch {
             action.process(obj)
         }

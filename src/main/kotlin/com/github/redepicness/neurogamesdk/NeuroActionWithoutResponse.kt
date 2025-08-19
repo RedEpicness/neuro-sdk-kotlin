@@ -5,7 +5,7 @@ abstract class NeuroActionWithoutResponse(
     description: String,
 ) : NeuroAction<Unit>(name, description, null) {
 
-    override fun validate(data: Unit) = true
+    override fun validate(data: Unit): String? = null
 
     override fun successMessage(data: Unit) = successMessage()
 
