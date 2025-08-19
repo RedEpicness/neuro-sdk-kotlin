@@ -84,6 +84,8 @@ object ListAction : NeuroAction<TestListResponse>(
         logger.info("Requesting limit responses for $serialName")
         return if (serialName == "testString") {
             listOf("response1", "response2")
+        } else if (serialName == "[testList]") {
+            listOf("list-1", "list-2")
         } else {
             emptyList()
         }
@@ -93,5 +95,6 @@ object ListAction : NeuroAction<TestListResponse>(
 
 @Serializable
 data class TestListResponse(
-    val testString: String
+    val testString: String,
+    val testList: List<String>,
 )

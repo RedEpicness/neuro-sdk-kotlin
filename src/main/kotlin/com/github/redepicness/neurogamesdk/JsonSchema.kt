@@ -152,7 +152,7 @@ internal fun SerialDescriptor.jsonSchemaProperty(
         PrimitiveKind.SHORT -> JsonSchemaProperty.Integer(description)
         PrimitiveKind.STRING -> JsonSchemaProperty.Str(description, limitedResponses.ifEmpty { null })
         SerialKind.ENUM -> JsonSchemaProperty.Str(description, elementNames.toList())
-        StructureKind.LIST -> JsonSchemaProperty.Array(description, elementDescriptors.first().jsonSchemaProperty())
+        StructureKind.LIST -> JsonSchemaProperty.Array(description, elementDescriptors.first().jsonSchemaProperty("[$name]", limitedResponseResolver = limitedResponseResolver))
         StructureKind.CLASS, StructureKind.MAP, StructureKind.OBJECT -> {
             JsonSchemaProperty.Object(
                 description,

@@ -7,7 +7,7 @@ plugins {
     val jvmVersion = 8
 
 group = "com.github.redepicness"
-version = "1.1.1-SNAPSHOT"
+version = "1.1.2-SNAPSHOT"
 
 dependencies {
     // testImplementation(kotlin("test"))
