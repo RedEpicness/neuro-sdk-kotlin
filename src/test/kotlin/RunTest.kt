@@ -28,7 +28,7 @@ fun main() {
 
 object NoResponseAction : NeuroActionWithoutResponse("no-response", "This is the no response action") {
     override fun successMessage(): String {
-        return "Succesfull!"
+        return "Successful!"
     }
 
     override suspend fun process() {
