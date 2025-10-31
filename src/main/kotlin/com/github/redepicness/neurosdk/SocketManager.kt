@@ -1,4 +1,4 @@
-package com.github.redepicness.neurogamesdk
+package com.github.redepicness.neurosdk
 
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
@@ -13,10 +13,10 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
-import com.github.redepicness.neurogamesdk.SocketManager.CloseReason.ERROR
-import com.github.redepicness.neurogamesdk.SocketManager.CloseReason.INVALID_URL
-import com.github.redepicness.neurogamesdk.SocketManager.CloseReason.NORMAL
-import com.github.redepicness.neurogamesdk.SocketManager.CloseReason.RECONNECT
+import com.github.redepicness.neurosdk.SocketManager.CloseReason.ERROR
+import com.github.redepicness.neurosdk.SocketManager.CloseReason.INVALID_URL
+import com.github.redepicness.neurosdk.SocketManager.CloseReason.NORMAL
+import com.github.redepicness.neurosdk.SocketManager.CloseReason.RECONNECT
 import org.slf4j.LoggerFactory
 import kotlin.time.Duration.Companion.seconds
 import io.ktor.websocket.CloseReason as WSCloseReason

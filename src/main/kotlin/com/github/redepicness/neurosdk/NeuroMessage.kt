@@ -1,4 +1,4 @@
-package com.github.redepicness.neurogamesdk
+package com.github.redepicness.neurosdk
 
 import io.ktor.websocket.*
 import kotlinx.serialization.SerialName

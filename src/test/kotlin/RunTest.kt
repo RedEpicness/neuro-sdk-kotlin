@@ -1,6 +1,6 @@
-import com.github.redepicness.neurogamesdk.NeuroAction
-import com.github.redepicness.neurogamesdk.NeuroActionWithoutResponse
-import com.github.redepicness.neurogamesdk.NeuroGameSDK
+import com.github.redepicness.neurosdk.NeuroAction
+import com.github.redepicness.neurosdk.NeuroActionWithoutResponse
+import com.github.redepicness.neurosdk.NeuroGameSDK
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking

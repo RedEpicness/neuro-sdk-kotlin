@@ -1,4 +1,4 @@
-package com.github.redepicness.neurogamesdk
+package com.github.redepicness.neurosdk
 
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.json.Json

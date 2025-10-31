@@ -1,4 +1,4 @@
-package com.github.redepicness.neurogamesdk
+package com.github.redepicness.neurosdk
 
 abstract class NeuroActionWithoutResponse(
     name: String,

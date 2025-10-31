@@ -1,4 +1,4 @@
-package com.github.redepicness.neurogamesdk
+package com.github.redepicness.neurosdk
 
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
