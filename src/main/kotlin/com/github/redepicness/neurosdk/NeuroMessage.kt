@@ -68,25 +68,25 @@ internal data class NeuroMessage(
     companion object {
         private val json = Json
 
-        inline fun <reified T> message(command: String, game: String? = null, data: T) =
-            NeuroMessage(command, game, json.encodeToJsonElement(data).jsonObject)
+        inline fun <reified T> message(command: String, name: String? = null, data: T) =
+            NeuroMessage(command, name, json.encodeToJsonElement(data).jsonObject)
 
-        fun startup(game: String? = null) = NeuroMessage("startup", game)
+        fun startup(name: String? = null) = NeuroMessage("startup", name)
 
-        fun context(message: String, silent: Boolean, game: String? = null) =
-            message("context", game, Context(message, silent))
+        fun context(message: String, silent: Boolean, name: String? = null) =
+            message("context", name, Context(message, silent))
 
-        fun registerActions(actions: List<Action>, game: String? = null) =
-            message("actions/register", game, RegisterActions(actions))
+        fun registerActions(actions: List<Action>, name: String? = null) =
+            message("actions/register", name, RegisterActions(actions))
 
-        fun unregisterActions(actions: List<String>, game: String? = null) =
-            message("actions/unregister", game, UnregisterActions(actions))
+        fun unregisterActions(actions: List<String>, name: String? = null) =
+            message("actions/unregister", name, UnregisterActions(actions))
 
-        fun forceActions(state: String?, query: String, ephemeralContext: Boolean, actionNames: List<String>, game: String? = null) =
-            message("actions/force", game, ForceActions(state, query, ephemeralContext, actionNames))
+        fun forceActions(state: String?, query: String, ephemeralContext: Boolean, actionNames: List<String>, name: String? = null) =
+            message("actions/force", name, ForceActions(state, query, ephemeralContext, actionNames))
 
-        fun actionResult(id: String, success: Boolean, message: String? = null, game: String? = null) =
-            message("action/result", game, ActionResult(id, success, message))
+        fun actionResult(id: String, success: Boolean, message: String? = null, name: String? = null) =
+            message("action/result", name, ActionResult(id, success, message))
 
     }
 }

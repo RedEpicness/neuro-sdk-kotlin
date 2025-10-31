@@ -37,7 +37,7 @@ internal class SocketManager(
     }
 
     private val json = Json
-    private val logger = LoggerFactory.getLogger("Socket Manager (${sdk.game})")
+    private val logger = LoggerFactory.getLogger("Socket Manager (${sdk.name})")
     private val outgoingChannel = Channel<NeuroMessage>(Channel.UNLIMITED)
     private var websocket: DefaultClientWebSocketSession? = null
     private var sendJob: Job? = null
@@ -65,15 +65,15 @@ internal class SocketManager(
                 client.webSocket(sdk.url) {
                     websocket = this
                     // Startup message
-                    logger.info("Sending startup message for '${sdk.game}'.")
-                    send(NeuroMessage.startup(sdk.game).toFrame())
+                    logger.info("Sending startup message for '${sdk.name}'.")
+                    send(NeuroMessage.startup(sdk.name).toFrame())
                     val actions = sdk.getRegisteredActions().values.map { (name, description, schema) ->
                         NeuroMessage.Action(name, description, schema)
                     }
                     // Resend previously registered actions
                     if (actions.isNotEmpty()) {
                         logger.info("Previously registered actions found, re-registering: ${actions.joinToString(", ") { it.name }}")
-                        send(NeuroMessage.registerActions(actions, sdk.game).toFrame())
+                        send(NeuroMessage.registerActions(actions, sdk.name).toFrame())
                     }
                     // TODO Resend forced action?
                     // Job for receiving
@@ -91,7 +91,7 @@ internal class SocketManager(
                     }
                     receiveJob = receiveJobLocal
                     val sendJobLocal = launchWithErrorHandling("Send") {
-                        outgoingChannel.receiveAsFlow().cancellable().collect { msg -> send(msg.copy(game = sdk.game).toFrame()) }
+                        outgoingChannel.receiveAsFlow().cancellable().collect { msg -> send(msg.copy(game = sdk.name).toFrame()) }
                     }
                     sendJob = sendJobLocal
 

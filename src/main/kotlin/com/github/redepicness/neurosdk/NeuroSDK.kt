@@ -16,12 +16,12 @@ import org.slf4j.LoggerFactory
 import java.util.concurrent.ConcurrentHashMap
 
 class NeuroSDK(
-    val game: String,
+    val name: String,
     webSocketURL: String,
     webSocketConfig: WebSockets.Config.() -> Unit = {},
     httpClientConfig: HttpClientConfig<CIOEngineConfig>.() -> Unit = {},
 ) {
-    private val logger = LoggerFactory.getLogger("$game Neuro SDK")
+    private val logger = LoggerFactory.getLogger("$name Neuro SDK")
     private val scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
     private val json = Json
     internal var url = webSocketURL
