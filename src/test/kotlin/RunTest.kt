@@ -1,6 +1,6 @@
 import com.github.redepicness.neurosdk.NeuroAction
 import com.github.redepicness.neurosdk.NeuroActionWithoutResponse
-import com.github.redepicness.neurosdk.NeuroGameSDK
+import com.github.redepicness.neurosdk.NeuroSDK
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -9,7 +9,7 @@ import kotlinx.serialization.builtins.serializer
 import kotlin.time.Duration.Companion.seconds
 
 fun main() {
-    val sdk = NeuroGameSDK("Epic Game", "ws://localhost:8000/")
+    val sdk = NeuroSDK("Epic Game", "ws://localhost:8000/")
 
     // sdk.registerActions(EchoAction)
 

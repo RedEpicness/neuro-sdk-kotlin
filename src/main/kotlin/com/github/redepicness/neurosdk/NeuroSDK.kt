@@ -15,7 +15,7 @@ import kotlinx.serialization.json.decodeFromJsonElement
 import org.slf4j.LoggerFactory
 import java.util.concurrent.ConcurrentHashMap
 
-class NeuroGameSDK(
+class NeuroSDK(
     val game: String,
     webSocketURL: String,
     webSocketConfig: WebSockets.Config.() -> Unit = {},

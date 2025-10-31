@@ -22,7 +22,7 @@ import kotlin.time.Duration.Companion.seconds
 import io.ktor.websocket.CloseReason as WSCloseReason
 
 internal class SocketManager(
-    val sdk: NeuroGameSDK,
+    val sdk: NeuroSDK,
     webSocketConfig: WebSockets.Config.() -> Unit = {},
     httpClientConfig: HttpClientConfig<CIOEngineConfig>.() -> Unit = {},
 ) {
