@@ -1,1 +1,1 @@
-rootProject.name = "neuro-game-sdk"
+rootProject.name = "neuro-sdk"
