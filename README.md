@@ -1,6 +1,6 @@
-## Kotlin Neuro Game SDK
+## Kotlin Neuro SDK
 
-A Kotlin implementation of the [Neuro Game SDK](https://github.com/VedalAI/neuro-game-sdk).
+A Kotlin implementation of the [Neuro SDK](https://github.com/VedalAI/neuro-sdk).
 
 While the project has been reasonably tested, I have not implemented it fully into a game yet,
 so there might still be minor changes done to the project as I'm using it for a game integration.
